@@ -53,7 +53,7 @@ public class GetDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 meterNo = meterNoEditText.getText().toString();
                 intMeterNo = Integer.parseInt(meterNo);
-                //searchCustomer();
+                //searchCustomer();  Without query Object
 
                 Query query = FirebaseDatabase.getInstance().getReference("Users/Customer")
                         .orderByChild("meter_no").equalTo(intMeterNo);
