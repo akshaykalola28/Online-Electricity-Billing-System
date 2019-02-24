@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "419574455796",
+    "firebase_url": "https://onlineelectricitybillingsystem.firebaseio.com",
+    "project_id": "onlineelectricitybillingsystem",
+    "storage_bucket": "onlineelectricitybillingsystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419574455796:android:47d42fea0cff54d3",
+        "android_client_info": {
+          "package_name": "example.akshay.onlinebillingsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419574455796-nqcat9t99m3c0rd3p3r8hgp1n893i3u9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "example.akshay.onlinebillingsystem",
+            "certificate_hash": "66fd179499668d74a28e1c46786002b283f6619d"
+          }
+        },
+        {
+          "client_id": "419574455796-ecirvuthc7ugme3ljtjoamjpqj3jrd5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3V1vBrrX2cmljCfXKFV8x0GYOY_ZVHf0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419574455796-ecirvuthc7ugme3ljtjoamjpqj3jrd5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
