@@ -64,7 +64,7 @@ public class Register extends AppCompatActivity {
         cPass_ET = (EditText) findViewById(R.id.enter_cpass);
         dataSubmit = (Button) findViewById(R.id.submit_data);
 
-        //Hide example.akshay.onlinebillingsystem.AllActivity.Customer and meter number
+        //Hide Customer and meter number
         customerNo_ET.setVisibility(View.GONE);
         meterNo_ET.setVisibility(View.GONE);
 

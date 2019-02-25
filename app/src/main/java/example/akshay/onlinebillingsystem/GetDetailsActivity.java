@@ -1,5 +1,8 @@
 package example.akshay.onlinebillingsystem;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,12 +23,12 @@ import com.google.firebase.database.ValueEventListener;
 public class GetDetailsActivity extends AppCompatActivity {
 
     LinearLayout detailsLayout;
-    EditText meterNoEditText;
-    Button getDetailButton;
+    EditText meterNoEditText, currentUnitEditText;
+    Button getDetailButton, submitUnitButton, resetButton;
     TextView name, cno, mno, lastUnit;
 
     String meterNo;
-    int intMeterNo;
+    int intMeterNo, currentUnit;
 
     FirebaseDatabase database;
     DatabaseReference mCustomerRef, mParticularRef;
@@ -35,11 +38,12 @@ public class GetDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_details);
 
-        meterNoEditText = (EditText) findViewById(R.id.get_meter_no);
+        meterNoEditText = findViewById(R.id.get_meter_no);
         name = findViewById(R.id.dis_name);
         cno = findViewById(R.id.dis_cno);
         mno = findViewById(R.id.dis_mno);
         lastUnit = findViewById(R.id.dis_last_unit);
+        currentUnitEditText = findViewById(R.id.enter_current_unit);
 
         database = FirebaseDatabase.getInstance();
         mCustomerRef = database.getReference("Users/Customer");
@@ -53,13 +57,13 @@ public class GetDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 meterNo = meterNoEditText.getText().toString();
                 intMeterNo = Integer.parseInt(meterNo);
-                //searchCustomer();  Without query Object
+                //searchCustomer();  //Without query Object
 
                 Query query = FirebaseDatabase.getInstance().getReference("Users/Customer")
                         .orderByChild("meter_no").equalTo(intMeterNo);
 
-
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -84,7 +88,40 @@ public class GetDetailsActivity extends AppCompatActivity {
                 });
             }
         });
+
+        submitUnitButton = findViewById(R.id.submit_unit_data);
+        submitUnitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!currentUnitEditText.getText().toString().equals("")) {
+                    currentUnit = Integer.parseInt(currentUnitEditText.getText().toString());
+                    int amount = Calculation.calculation(currentUnit);
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GetDetailsActivity.this);
+                    alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + amount)
+                            .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            currentUnitEditText.setText("");
+                        }
+                    }).show();
+                } else {
+                    currentUnitEditText.setError("Enter Valid Unit");
+                }
+            }
+        });
+
+        resetButton = findViewById(R.id.reset_unit_data);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentUnitEditText.setText("");
+            }
+        });
     }
+
 
     private void searchCustomer() {
         mCustomerRef.addValueEventListener(new ValueEventListener() {
