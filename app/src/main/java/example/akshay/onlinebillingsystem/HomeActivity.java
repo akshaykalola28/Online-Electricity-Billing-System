@@ -117,8 +117,9 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_add_bill) {
             Intent intent = new Intent(HomeActivity.this,GetDetailsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
-
+        } else if (id == R.id.nav_forgot_password) {
+            Intent intent = new Intent(HomeActivity.this,ForgotPassword.class);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

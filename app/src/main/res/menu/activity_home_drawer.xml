@@ -9,9 +9,9 @@
             android:icon="@drawable/ic_add_black"
             android:title="Add Bill" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_forgot_password"
+            android:icon="@drawable/ic_lock_outline_black_24dp"
+            android:title="Forgot Password" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
