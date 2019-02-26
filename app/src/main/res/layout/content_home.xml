@@ -8,4 +8,9 @@
     tools:context=".HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </android.support.constraint.ConstraintLayout>

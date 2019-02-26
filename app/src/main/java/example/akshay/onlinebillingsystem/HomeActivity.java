@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,15 +29,6 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -115,11 +104,11 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add_bill) {
-            Intent intent = new Intent(HomeActivity.this,GetDetailsActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(HomeActivity.this,GetDetailsActivity.class);
+            startActivity(intent);*/
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container,new GetDetailsActivity()).commit();
         } else if (id == R.id.nav_forgot_password) {
-            Intent intent = new Intent(HomeActivity.this,ForgotPassword.class);
-            startActivity(intent);
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container,new ForgotPassword()).commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -135,4 +124,7 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 }
