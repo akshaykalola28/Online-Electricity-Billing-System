@@ -23,11 +23,6 @@ public class AllActivity extends AppCompatActivity {
         startActivity(get);
     }
 
-    public void customerDetails(View view){
-        Intent cd = new Intent(this,CustomerDetailsActivity.class);
-        startActivity(cd);
-    }
-
     public void mainActivity(View view){
         Intent main = new Intent(this,MainActivity.class);
         startActivity(main);

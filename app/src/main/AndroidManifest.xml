@@ -28,7 +28,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".GetDetailsActivity" />
-        <activity android:name=".CustomerDetailsActivity" />
         <activity android:name=".Register" />
         <activity android:name=".AllActivity" />
         <activity android:name=".ForgotPassword" />
