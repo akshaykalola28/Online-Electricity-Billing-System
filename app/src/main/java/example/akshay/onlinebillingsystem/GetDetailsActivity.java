@@ -43,26 +43,26 @@ public class GetDetailsActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.activity_get_details,container,false);
+        mainView = inflater.inflate(R.layout.activity_get_details, container, false);
 
         //Toolbar toolbar = (Toolbar) mainView.findViewById(R.id.toolbar);
         ((HomeActivity) getActivity()).setActionBarTitle("Add Bill");
 
-        meterNoEditText =  mainView.findViewById(R.id.get_meter_no);
-        nameTextView =  mainView.findViewById(R.id.dis_name);
-        cnoTextView =  mainView.findViewById(R.id.dis_cno);
-        mnoTextView =  mainView.findViewById(R.id.dis_mno);
+        meterNoEditText = mainView.findViewById(R.id.get_meter_no);
+        nameTextView = mainView.findViewById(R.id.dis_name);
+        cnoTextView = mainView.findViewById(R.id.dis_cno);
+        mnoTextView = mainView.findViewById(R.id.dis_mno);
         pendingAmountTextView = mainView.findViewById(R.id.dis_pending_amount);
-        lastUnitTextView =  mainView.findViewById(R.id.dis_last_unit);
-        currentUnitEditText =  mainView.findViewById(R.id.enter_current_unit);
+        lastUnitTextView = mainView.findViewById(R.id.dis_last_unit);
+        currentUnitEditText = mainView.findViewById(R.id.enter_current_unit);
 
         database = FirebaseDatabase.getInstance();
         mCustomerRef = database.getReference("Users/Customer");
 
-        detailsLayout =  mainView.findViewById(R.id.details_layout);
+        detailsLayout = mainView.findViewById(R.id.details_layout);
         detailsLayout.setVisibility(View.GONE);
 
-        getDetailButton =  mainView.findViewById(R.id.get_details_button);
+        getDetailButton = mainView.findViewById(R.id.get_details_button);
         getDetailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,37 +107,41 @@ public class GetDetailsActivity extends Fragment {
             }
         });
 
-        submitUnitButton =  mainView.findViewById(R.id.submit_unit_data);
+        submitUnitButton = mainView.findViewById(R.id.submit_unit_data);
         submitUnitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!currentUnitEditText.getText().toString().equals("")) {
                     currentUnit = Integer.parseInt(currentUnitEditText.getText().toString());
-                    final int used_unit = currentUnit - lastUnit;
-                    final int final_amount = Calculation.calculation(used_unit, pendingAmount);
+                    if (isValidCurrentUnit(currentUnit)) {
+                        final int used_unit = currentUnit - lastUnit;
+                        final int final_amount = Calculation.calculation(used_unit, pendingAmount);
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                    alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + final_amount)
-                            .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                        alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + final_amount)
+                                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                                    AddBill addBill = new AddBill(used_unit,final_amount);
-                                    mBillInfo.child(labelOfBillInfo()).setValue(addBill);
-                                    mBillInfo.child("last_unit").setValue(currentUnit);
-                                    mBillInfo.child("pending_amount").setValue(final_amount);
-                                }
-                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            currentUnitEditText.setText("");
-                        }
-                    }).show();
+                                        AddBill addBill = new AddBill(used_unit, final_amount);
+                                        mBillInfo.child(labelOfBillInfo()).setValue(addBill);
+                                        mBillInfo.child("last_unit").setValue(currentUnit);
+                                        mBillInfo.child("pending_amount").setValue(final_amount);
+                                    }
+                                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                currentUnitEditText.setText("");
+                            }
+                        }).show();
+                    } else {
+                        currentUnitEditText.setError("Enter Valid Unit");
+                    }
                 } else {
                     currentUnitEditText.setError("Enter Valid Unit");
                 }
             }
         });
 
-        resetButton =  mainView.findViewById(R.id.reset_unit_data);
+        resetButton = mainView.findViewById(R.id.reset_unit_data);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +153,10 @@ public class GetDetailsActivity extends Fragment {
         return mainView;
     }
 
+    private boolean isValidCurrentUnit(int unit) {
+        return unit >= lastUnit;
+    }
+
     private void fetchOldData() {
         mBillInfo.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -156,7 +164,7 @@ public class GetDetailsActivity extends Fragment {
                 try {
                     lastUnit = dataSnapshot.child("last_unit").getValue(Integer.class);
                     pendingAmount = dataSnapshot.child("pending_amount").getValue(Integer.class);
-                } catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     lastUnit = 0;
                     pendingAmount = 0;
                 }
@@ -169,13 +177,13 @@ public class GetDetailsActivity extends Fragment {
         });
     }
 
-    private String labelOfBillInfo(){
+    private String labelOfBillInfo() {
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         String yearString = "" + year;
-        String monthString = "" + (month+1);
-        if(month <= 8){
+        String monthString = "" + (month + 1);
+        if (month <= 8) {
             monthString = "0" + monthString;
         }
         return yearString + monthString;

@@ -3,17 +3,11 @@ package example.akshay.onlinebillingsystem;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class ForgotPassword extends Fragment {
 
@@ -37,17 +31,6 @@ public class ForgotPassword extends Fragment {
         sendPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                String yearString = "" + year;
-                String monthString = "" + (month+1);
-                if(month <= 8){
-                    monthString = "0" + monthString;
-                }
-                String label = yearString + monthString;
-                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-                Snackbar.make(v,"Label: " + label + ", Date: " + date,Snackbar.LENGTH_SHORT).show();
             }
         });
 

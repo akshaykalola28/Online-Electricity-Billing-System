@@ -112,8 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getPreferences(){
-        sharedpreferences = getSharedPreferences(mypreference,
-                Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
         if (sharedpreferences.contains("usernameKey")) {
             username_ET.setText(sharedpreferences.getString("usernameKey", ""));
@@ -129,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
