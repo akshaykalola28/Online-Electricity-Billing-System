@@ -186,6 +186,8 @@ public class GetDetailsActivity extends Fragment {
         if (month <= 8) {
             monthString = "0" + monthString;
         }
+
+
         return yearString + monthString;
     }
 
