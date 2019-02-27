@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class GetDetailsActivity extends Fragment {
 
     View mainView;
@@ -30,13 +32,13 @@ public class GetDetailsActivity extends Fragment {
     LinearLayout detailsLayout;
     EditText meterNoEditText, currentUnitEditText;
     Button getDetailButton, submitUnitButton, resetButton;
-    TextView name, cno, mno, lastUnit;
+    TextView nameTextView, cnoTextView, mnoTextView, lastUnitTextView, pendingAmountTextView;
 
     String meterNo;
-    int intMeterNo, currentUnit;
+    int intMeterNo, currentUnit, lastUnit, pendingAmount;
 
     FirebaseDatabase database;
-    DatabaseReference mCustomerRef, mParticularRef;
+    DatabaseReference mCustomerRef, mParticularRef, mBillInfo;
 
     @Nullable
     @Override
@@ -47,10 +49,11 @@ public class GetDetailsActivity extends Fragment {
         ((HomeActivity) getActivity()).setActionBarTitle("Add Bill");
 
         meterNoEditText =  mainView.findViewById(R.id.get_meter_no);
-        name =  mainView.findViewById(R.id.dis_name);
-        cno =  mainView.findViewById(R.id.dis_cno);
-        mno =  mainView.findViewById(R.id.dis_mno);
-        lastUnit =  mainView.findViewById(R.id.dis_last_unit);
+        nameTextView =  mainView.findViewById(R.id.dis_name);
+        cnoTextView =  mainView.findViewById(R.id.dis_cno);
+        mnoTextView =  mainView.findViewById(R.id.dis_mno);
+        pendingAmountTextView = mainView.findViewById(R.id.dis_pending_amount);
+        lastUnitTextView =  mainView.findViewById(R.id.dis_last_unit);
         currentUnitEditText =  mainView.findViewById(R.id.enter_current_unit);
 
         database = FirebaseDatabase.getInstance();
@@ -66,6 +69,8 @@ public class GetDetailsActivity extends Fragment {
                 meterNo = meterNoEditText.getText().toString();
                 if (!meterNo.equals("")) {
                     intMeterNo = Integer.parseInt(meterNo);
+                    mBillInfo = database.getReference("Bill Info/" + meterNo);
+                    fetchOldData();
                     //searchCustomer();  //Without query Object
 
                     Query query = FirebaseDatabase.getInstance().getReference("Users/Customer")
@@ -79,10 +84,11 @@ public class GetDetailsActivity extends Fragment {
                                 detailsLayout.setVisibility(View.VISIBLE);
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                     Customer customer = snapshot.getValue(Customer.class);
-                                    name.setText(customer.name);
-                                    cno.setText("" + customer.c_no);
-                                    mno.setText("" + customer.meter_no);
-                                    //lastUnit.setText("" + user.last_unit);
+                                    nameTextView.setText(customer.name);
+                                    cnoTextView.setText("" + customer.c_no);
+                                    mnoTextView.setText("" + customer.meter_no);
+                                    pendingAmountTextView.setText("" + pendingAmount);
+                                    lastUnitTextView.setText("" + lastUnit);
                                 }
                             } else {
                                 meterNoEditText.setError("Wrong Meter Number");
@@ -107,12 +113,18 @@ public class GetDetailsActivity extends Fragment {
             public void onClick(View v) {
                 if (!currentUnitEditText.getText().toString().equals("")) {
                     currentUnit = Integer.parseInt(currentUnitEditText.getText().toString());
-                    int amount = Calculation.calculation(currentUnit);
+                    final int used_unit = currentUnit - lastUnit;
+                    final int final_amount = Calculation.calculation(used_unit, pendingAmount);
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                    alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + amount)
+                    alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + final_amount)
                             .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+
+                                    AddBill addBill = new AddBill(used_unit,final_amount);
+                                    mBillInfo.child(labelOfBillInfo()).setValue(addBill);
+                                    mBillInfo.child("last_unit").setValue(currentUnit);
+                                    mBillInfo.child("pending_amount").setValue(final_amount);
                                 }
                             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -137,6 +149,38 @@ public class GetDetailsActivity extends Fragment {
         return mainView;
     }
 
+    private void fetchOldData() {
+        mBillInfo.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+                    lastUnit = dataSnapshot.child("last_unit").getValue(Integer.class);
+                    pendingAmount = dataSnapshot.child("pending_amount").getValue(Integer.class);
+                } catch (NullPointerException e){
+                    lastUnit = 0;
+                    pendingAmount = 0;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private String labelOfBillInfo(){
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        String yearString = "" + year;
+        String monthString = "" + (month+1);
+        if(month <= 8){
+            monthString = "0" + monthString;
+        }
+        return yearString + monthString;
+    }
+
     private void searchCustomer() {
         mCustomerRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -148,10 +192,10 @@ public class GetDetailsActivity extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             detailsLayout.setVisibility(View.VISIBLE);
                             String getName = dataSnapshot.child("name").getValue(String.class);
-                            name.setText(dataSnapshot.child("name").getValue(String.class));
-                            cno.setText(dataSnapshot.child("c_no").getValue(String.class));
-                            mno.setText(dataSnapshot.child("meter_no").getValue(String.class));
-                            lastUnit.setText(dataSnapshot.child("last_unit").getValue(String.class));
+                            nameTextView.setText(dataSnapshot.child("name").getValue(String.class));
+                            cnoTextView.setText(dataSnapshot.child("c_no").getValue(String.class));
+                            mnoTextView.setText(dataSnapshot.child("meter_no").getValue(String.class));
+                            lastUnitTextView.setText(dataSnapshot.child("last_unit").getValue(String.class));
 
                         }
 

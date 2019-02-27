@@ -3,207 +3,231 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="40dp"
-    android:layout_marginRight="20dp"
     tools:context=".GetDetailsActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="8dp">
-
-            <EditText
-                android:id="@+id/get_meter_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:ems="10"
-                android:hint="Enter Meter No."
-                android:inputType="text" />
-
-            <Button
-                android:id="@+id/get_details_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="60dp"
-                android:layout_weight="3"
-                android:text="Get Details"
-                tools:layout_editor_absoluteX="117dp"
-                tools:layout_editor_absoluteY="107dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/details_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="40dp"
+            android:paddingRight="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp">
+                tools:layout_editor_absoluteY="8dp">
+
+                <EditText
+                    android:id="@+id/get_meter_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="Enter Meter No."
+                    android:inputType="text" />
+
+                <Button
+                    android:id="@+id/get_details_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_weight="3"
+                    android:text="Get Details"
+                    tools:layout_editor_absoluteX="117dp"
+                    tools:layout_editor_absoluteY="107dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
 
-                    <TextView
-                        android:id="@+id/textView"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="Customer Name:"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="Customer Number:"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Customer Name:"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/textView5"
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Customer Number:"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Meter Number:"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/textView51"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Pending Amount:"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Last Unit Count:"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Current Unit Count:"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="Meter Number:"
+                        android:orientation="vertical"
                         android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:textSize="18dp">
 
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="Last Unit Count:"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
+                        <TextView
+                            android:id="@+id/dis_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="####"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="Current Unit Count:"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
+                        <TextView
+                            android:id="@+id/dis_cno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="####"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/dis_mno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="####"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/dis_pending_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="####"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/dis_last_unit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="####"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/enter_current_unit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:ems="10"
+                            android:fontFamily="sans-serif-condensed"
+                            android:hint="Enter Current Unit"
+                            android:inputType="number"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:orientation="vertical"
-                    android:textColor="#000"
-                    android:textSize="18dp">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/dis_name"
-                        android:layout_width="match_parent"
+                    <Button
+                        android:id="@+id/submit_unit_data"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="####"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:text="Submit" />
 
-                    <TextView
-                        android:id="@+id/dis_cno"
-                        android:layout_width="match_parent"
+                    <Button
+                        android:id="@+id/reset_unit_data"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="####"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
-
-                    <TextView
-                        android:id="@+id/dis_mno"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="####"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
-
-                    <TextView
-                        android:id="@+id/dis_last_unit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="####"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/enter_current_unit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:ems="10"
-                        android:fontFamily="sans-serif-condensed"
-                        android:hint="Enter Current Unit"
-                        android:inputType="number"
-                        android:textColor="#000"
-                        android:textSize="18dp" />
-
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:text="Reset" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/submit_unit_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:text="Submit" />
-
-                <Button
-                    android:id="@+id/reset_unit_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:text="Reset" />
-            </LinearLayout>
-
         </LinearLayout>
-
-    </LinearLayout>
-
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
