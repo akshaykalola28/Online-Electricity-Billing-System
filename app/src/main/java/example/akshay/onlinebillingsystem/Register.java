@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +33,7 @@ public class Register extends AppCompatActivity {
     EditText cPass_ET;
     EditText username_ET;
     Button dataSubmit;
+    TextInputLayout cnoTIL, mnoTIL;
 
     String user_type;
     String name;
@@ -63,10 +65,12 @@ public class Register extends AppCompatActivity {
         password_ET = (EditText) findViewById(R.id.enter_pass);
         cPass_ET = (EditText) findViewById(R.id.enter_cpass);
         dataSubmit = (Button) findViewById(R.id.submit_data);
+        cnoTIL = findViewById(R.id.cno_text);
+        mnoTIL = findViewById(R.id.mno_text);
 
         //Hide Customer and meter number
-        customerNo_ET.setVisibility(View.GONE);
-        meterNo_ET.setVisibility(View.GONE);
+        cnoTIL.setVisibility(View.GONE);
+        mnoTIL.setVisibility(View.GONE);
 
         final Spinner spinner = (Spinner) findViewById(R.id.user_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -77,15 +81,19 @@ public class Register extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 1){
+                if (position == 0){
+                    user_type = null;
+                    cnoTIL.setVisibility(View.GONE);
+                    mnoTIL.setVisibility(View.GONE);
+                }else if(position == 1){
                     user_type = "Users/Customer";
-                    customerNo_ET.setVisibility(View.VISIBLE);
-                    meterNo_ET.setVisibility(View.VISIBLE);
+                    cnoTIL.setVisibility(View.VISIBLE);
+                    mnoTIL.setVisibility(View.VISIBLE);
                     mRef = database.getReference(user_type);
                 } else if(position == 2){
                     user_type = "Users/Unit Reader";
-                    customerNo_ET.setVisibility(View.GONE);
-                    meterNo_ET.setVisibility(View.GONE);
+                    cnoTIL.setVisibility(View.GONE);
+                    mnoTIL.setVisibility(View.GONE);
                     mRef = database.getReference(user_type);
                 }
             }

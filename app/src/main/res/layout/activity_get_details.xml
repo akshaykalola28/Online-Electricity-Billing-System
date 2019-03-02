@@ -25,14 +25,21 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="8dp">
 
-                <EditText
-                    android:id="@+id/get_meter_no"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
-                    android:hint="Enter Meter No."
-                    android:inputType="text" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/get_meter_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:ems="10"
+                        android:hint="Enter Meter No."
+                        android:inputType="text" />
+
+                </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/get_details_button"
