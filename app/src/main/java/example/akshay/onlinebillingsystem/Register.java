@@ -1,6 +1,7 @@
 package example.akshay.onlinebillingsystem;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +50,7 @@ public class Register extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference mRef;
+    ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +135,7 @@ public class Register extends AppCompatActivity {
                                     }
                                 }).show();
                     } else {
+                        mDialog = ProgressDialog.show(Register.this, "Loading", "Please wait...", true);
                         addCustomer();
                     }
                 } else if(user_type.equals("Users/Unit Reader")){
@@ -143,6 +149,7 @@ public class Register extends AppCompatActivity {
                                     }
                                 }).show();
                     } else {
+                        mDialog = ProgressDialog.show(Register.this, "Loading", "Please wait...", true);
                         addUnitReader();
                     }
                 }
@@ -159,8 +166,14 @@ public class Register extends AppCompatActivity {
                     alertDialog("Alert","Username already exists.");
                 } else {
                     Customer customer = new Customer(name, email, username, password, mo_no, c_no, meter_no);
-                    mRef.child(username).setValue(customer);
-                    alertDialog("Congratulation","Registration Successful.");
+                    mRef.child(username).setValue(customer).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            mDialog.dismiss();
+                            alertDialog("Congratulation","Registration Successful.");
+                        }
+                    });
+
                 }
             }
 
@@ -179,8 +192,18 @@ public class Register extends AppCompatActivity {
                     alertDialog("Alert","Username already exists.");
                 } else {
                     User user = new User(name, email, username, password, mo_no);
-                    mRef.child(username).setValue(user);
-                    alertDialog("Congratulation","Registration Successful.");
+                    mRef.child(username).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                mDialog.dismiss();
+                                alertDialog("Congratulation","Registration Successful.");
+                            } else {
+                                alertDialog("Error","Registration not completed.");
+                            }
+                        }
+                    });
+
                 }
             }
 

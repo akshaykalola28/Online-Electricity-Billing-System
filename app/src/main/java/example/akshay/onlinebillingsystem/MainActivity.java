@@ -1,5 +1,6 @@
 package example.akshay.onlinebillingsystem;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
     Button logInButton, registerButton;
     TextView forgot_TV;
 
-    String username,password;
+    String username, password;
 
     DatabaseReference mUserData;
     DatabaseReference mChildRef;
+    ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         forgot_TV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,AllActivity.class);
+                Intent intent = new Intent(MainActivity.this, AllActivity.class);
                 startActivity(intent);
             }
         });
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (getValidData()) {
+                    mDialog = ProgressDialog.show(MainActivity.this, "Please Wait", "We are logging you...", true);
                     //Check valid user
                     mUserData.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -75,12 +78,13 @@ public class MainActivity extends AppCompatActivity {
                                             Toast.makeText(MainActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
 
                                             savePreferences();
-
+                                            mDialog.dismiss();
                                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                             intent.putExtra("ORIGINAL_USER", user);
                                             startActivity(intent);
                                             finish();
                                         } else {
+                                            mDialog.dismiss();
                                             Toast.makeText(MainActivity.this, "Wrong password!!", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
+                                mDialog.dismiss();
                                 Toast.makeText(MainActivity.this, "User doesn't Exists.", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -105,48 +110,48 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void savePreferences(){
+    public void savePreferences() {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("usernameKey", username);
-        editor.putString("passKey", password);
         editor.apply();
     }
 
-    public void getPreferences(){
+    public void getPreferences() {
         sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
         if (sharedpreferences.contains("usernameKey")) {
             username_ET.setText(sharedpreferences.getString("usernameKey", ""));
             username = sharedpreferences.getString("usernameKey", "");
             mChildRef = mUserData.child(username);
+
+            mDialog = ProgressDialog.show(MainActivity.this,"Please Wait","We are logging you...",true);
             //Retrieve data of specific user
             mChildRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     User user = dataSnapshot.getValue(User.class);
-                        Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-                        intent.putExtra("ORIGINAL_USER",user);
-                        startActivity(intent);
-                        finish();
+                    mDialog.dismiss();
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.putExtra("ORIGINAL_USER", user);
+                    startActivity(intent);
+                    finish();
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
             });
         }
-        if (sharedpreferences.contains("passKey")) {
-            password_ET.setText(sharedpreferences.getString("passKey", ""));
-        }
     }
 
     private boolean getValidData() {
         username = username_ET.getText().toString();
         password = password_ET.getText().toString();
-        if (username.equals("") || username == null){
+        if (username.equals("") || username == null) {
             username_ET.setError("Enter Username");
             return false;
-        } else if (password.equals("") || password == null){
+        } else if (password.equals("") || password == null) {
             password_ET.setError("Enter Password");
             return false;
         } else {
@@ -154,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openRegister(View view){
-        Intent register = new Intent(this,Register.class);
+    public void openRegister(View view) {
+        Intent register = new Intent(this, Register.class);
         startActivity(register);
     }
 }

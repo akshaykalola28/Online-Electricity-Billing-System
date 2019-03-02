@@ -3,6 +3,7 @@ package example.akshay.onlinebillingsystem;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +42,7 @@ public class GetDetailsActivity extends Fragment {
 
     FirebaseDatabase database;
     DatabaseReference mCustomerRef, mParticularRef, mBillInfo;
+    ProgressDialog mDialog;
 
     @Nullable
     @Override
@@ -68,6 +72,7 @@ public class GetDetailsActivity extends Fragment {
             public void onClick(View v) {
                 meterNo = meterNoEditText.getText().toString();
                 if (!meterNo.equals("")) {
+                    mDialog = ProgressDialog.show(mainView.getContext(), "Please Wait", "Searching Customer...", true);
                     intMeterNo = Integer.parseInt(meterNo);
                     mBillInfo = database.getReference("Bill Info/" + meterNo);
                     fetchOldData();
@@ -89,8 +94,11 @@ public class GetDetailsActivity extends Fragment {
                                     mnoTextView.setText("" + customer.meter_no);
                                     pendingAmountTextView.setText("" + pendingAmount);
                                     lastUnitTextView.setText("" + lastUnit);
+                                    mDialog.dismiss();
                                 }
                             } else {
+                                mDialog.dismiss();
+                                meterNoEditText.requestFocus();
                                 meterNoEditText.setError("Wrong Meter Number");
                                 //meterNoEditText.setText("");
                                 detailsLayout.setVisibility(View.GONE);
@@ -117,13 +125,24 @@ public class GetDetailsActivity extends Fragment {
                         final int used_unit = currentUnit - lastUnit;
                         final int final_amount = Calculation.calculation(used_unit, pendingAmount);
 
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                         alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + final_amount)
                                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-
+                                        mDialog = ProgressDialog.show(mainView.getContext(), "Loading", "Please Wait...", true);
                                         AddBill addBill = new AddBill(used_unit, final_amount);
-                                        mBillInfo.child(labelOfBillInfo()).setValue(addBill);
+                                        mBillInfo.child(labelOfBillInfo()).setValue(addBill).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()){
+                                                    mDialog.dismiss();
+                                                    alertDialog("Success","Bill Added");
+                                                } else {
+                                                    mDialog.dismiss();
+                                                    alertDialog("Error","Please add bill again");
+                                                }
+                                            }
+                                        });
                                         mBillInfo.child("last_unit").setValue(currentUnit);
                                         mBillInfo.child("pending_amount").setValue(final_amount);
                                     }
@@ -187,6 +206,19 @@ public class GetDetailsActivity extends Fragment {
             monthString = "0" + monthString;
         }
         return yearString + monthString;
+    }
+
+    private void alertDialog(String title, String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mainView.getContext());
+        alertDialogBuilder.setTitle(title).setMessage(message)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        detailsLayout.setVisibility(View.GONE);
+                        currentUnitEditText.setText("");
+                        meterNoEditText.requestFocus();
+                        //meterNoEditText.setText("");
+                    }
+                }).show();
     }
 
     private void searchCustomer() {
