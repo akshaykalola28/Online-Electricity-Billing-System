@@ -58,48 +58,49 @@ public class MainActivity extends AppCompatActivity {
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getData();
 
-                //Check valid user
-                mUserData.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild(username)){
-                            mChildRef = mUserData.child(username);
-                            //Retrieve data of specific user
-                            mChildRef.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    User user = dataSnapshot.getValue(User.class);
-                                    if (user.getPassword().equals(password)){
-                                        Toast.makeText(MainActivity.this,"Log in successful",Toast.LENGTH_SHORT).show();
+                if (getValidData()) {
+                    //Check valid user
+                    mUserData.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.hasChild(username)) {
+                                mChildRef = mUserData.child(username);
+                                //Retrieve data of specific user
+                                mChildRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        User user = dataSnapshot.getValue(User.class);
+                                        if (user.getPassword().equals(password)) {
+                                            Toast.makeText(MainActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
 
-                                        savePreferences();
+                                            savePreferences();
 
-                                        Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-                                        intent.putExtra("ORIGINAL_USER",user);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(MainActivity.this,"Wrong password!!",Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                            intent.putExtra("ORIGINAL_USER", user);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(MainActivity.this, "Wrong password!!", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                }
-                            });
-                        } else {
-                            Toast.makeText(MainActivity.this,"User doesn't Exists.",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(MainActivity.this, "User doesn't Exists.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
     }
@@ -139,9 +140,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getData() {
+    private boolean getValidData() {
         username = username_ET.getText().toString();
         password = password_ET.getText().toString();
+        if (username.equals("") || username == null){
+            username_ET.setError("Enter Username");
+            return false;
+        } else if (password.equals("") || password == null){
+            password_ET.setError("Enter Password");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void openRegister(View view){
