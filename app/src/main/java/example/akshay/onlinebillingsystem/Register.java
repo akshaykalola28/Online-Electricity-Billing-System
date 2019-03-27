@@ -123,8 +123,6 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this,"Please Select User",Toast.LENGTH_SHORT).show();
                 } else if(user_type.equals("Users/Customer")){
                     if (!cpass.equals(password)) {
-                        c_no = Integer.parseInt(customerNo_ET.getText().toString());
-                        meter_no = Integer.parseInt(meterNo_ET.getText().toString());
 
                         Snackbar.make(v, "Password are not same! Try Again!!", Snackbar.LENGTH_LONG)
                                 .setAction("RETRY", new View.OnClickListener() {
@@ -135,6 +133,9 @@ public class Register extends AppCompatActivity {
                                     }
                                 }).show();
                     } else {
+                        c_no = Integer.parseInt(customerNo_ET.getText().toString());
+                        meter_no = Integer.parseInt(meterNo_ET.getText().toString());
+
                         mDialog = ProgressDialog.show(Register.this, "Loading", "Please wait...", true);
                         addCustomer();
                     }
@@ -173,7 +174,6 @@ public class Register extends AppCompatActivity {
                             alertDialog("Congratulation","Registration Successful.");
                         }
                     });
-
                 }
             }
 
@@ -203,7 +203,6 @@ public class Register extends AppCompatActivity {
                             }
                         }
                     });
-
                 }
             }
 

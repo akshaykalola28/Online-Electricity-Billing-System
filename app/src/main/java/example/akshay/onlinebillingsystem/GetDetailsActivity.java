@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -76,7 +75,6 @@ public class GetDetailsActivity extends Fragment {
                     intMeterNo = Integer.parseInt(meterNo);
                     mBillInfo = database.getReference("Bill Info/" + meterNo);
                     fetchOldData();
-                    //searchCustomer();  //Without query Object
 
                     Query query = FirebaseDatabase.getInstance().getReference("Users/Customer")
                             .orderByChild("meter_no").equalTo(intMeterNo);
@@ -219,41 +217,5 @@ public class GetDetailsActivity extends Fragment {
                         //meterNoEditText.setText("");
                     }
                 }).show();
-    }
-
-    private void searchCustomer() {
-        mCustomerRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(meterNo)) {
-                    mParticularRef = mCustomerRef.child(meterNo);
-                    mParticularRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            detailsLayout.setVisibility(View.VISIBLE);
-                            String getName = dataSnapshot.child("name").getValue(String.class);
-                            nameTextView.setText(dataSnapshot.child("name").getValue(String.class));
-                            cnoTextView.setText(dataSnapshot.child("c_no").getValue(String.class));
-                            mnoTextView.setText(dataSnapshot.child("meter_no").getValue(String.class));
-                            lastUnitTextView.setText(dataSnapshot.child("last_unit").getValue(String.class));
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                } else {
-                    Toast.makeText(getActivity(), "Invalid Customer no.", Toast.LENGTH_SHORT).show();
-                    detailsLayout.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 }
