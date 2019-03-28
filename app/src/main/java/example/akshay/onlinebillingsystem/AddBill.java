@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AddBill {
-    public double bill_no;
+    public int bill_no;
     public String date;
     public String payment_last_date;
     public int used_unit;
@@ -14,7 +14,7 @@ public class AddBill {
 
     AddBill(){}
 
-    AddBill(double bill_no, int used_unit, int payable_amount){
+    AddBill(int bill_no, int used_unit, int payable_amount){
         this.bill_no = bill_no;
         this.date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         this.used_unit = used_unit;

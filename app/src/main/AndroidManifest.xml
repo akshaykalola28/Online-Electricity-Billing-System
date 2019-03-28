@@ -17,6 +17,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".TransactionActivity"
+            android:label="Bill Details" />
+        <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -27,9 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GetDetailsActivity" />
         <activity android:name=".Register" />
-        <activity android:name=".ForgotPassword" />
     </application>
 
 </manifest>

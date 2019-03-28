@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //getFragmentManager().beginTransaction().replace(R.id.main_fragment,new ForgotPassword()).commit();
+                Intent intent = new Intent(MainActivity.this,TransactionActivity.class);
+                startActivity(intent);
             }
         });
         logInButton = findViewById(R.id.log_in);
