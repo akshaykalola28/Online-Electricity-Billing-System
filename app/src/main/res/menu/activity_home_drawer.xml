@@ -12,15 +12,20 @@
             android:id="@+id/nav_forgot_password"
             android:icon="@drawable/ic_lock_outline_black_24dp"
             android:title="Forgot Password" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_highlight_off_black_24dp"
+            android:title="Log Out" />
     </group>
 
-    <item android:title="Communicate">
+    <!--<item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
         </menu>
-    </item>
+    </item>-->
 
 </menu>
