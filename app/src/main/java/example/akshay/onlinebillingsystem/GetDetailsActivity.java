@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,7 +98,7 @@ public class GetDetailsActivity extends Fragment {
                             } else {
                                 mDialog.dismiss();
                                 meterNoEditText.requestFocus();
-                                meterNoEditText.setError("Wrong Meter Number");
+                                meterNoEditText.setError("Customer Not Found");
                                 //meterNoEditText.setText("");
                                 detailsLayout.setVisibility(View.GONE);
                             }
@@ -128,21 +129,44 @@ public class GetDetailsActivity extends Fragment {
                                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         mDialog = ProgressDialog.show(mainView.getContext(), "Loading", "Please Wait...", true);
-                                        AddBill addBill = new AddBill(used_unit, final_amount);
-                                        mBillInfo.child(labelOfBillInfo()).setValue(addBill).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        //getBillNo();
+
+                                        final DatabaseReference billNoRef = database.getReference("/Data");
+                                        billNoRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()){
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                try {
+                                                    int billNo = dataSnapshot.child("bill_no").getValue(Integer.class);
+                                                    billNo++;
+                                                    billNoRef.child("bill_no").setValue(billNo);
+
+                                                    AddBill addBill = new AddBill(billNo, used_unit, final_amount);
+                                                    mBillInfo.child(labelOfBillInfo()).setValue(addBill).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                mDialog.dismiss();
+                                                                alertDialog("Success", "Bill Added");
+                                                            } else {
+                                                                mDialog.dismiss();
+                                                                alertDialog("Error", "Please add bill again");
+                                                            }
+                                                        }
+                                                    });
+                                                    mBillInfo.child("last_unit").setValue(currentUnit);
+                                                    mBillInfo.child("pending_amount").setValue(final_amount);
+                                                } catch (NullPointerException e) {
+                                                    Log.d("Bill No: ", "null pointer exception");
                                                     mDialog.dismiss();
-                                                    alertDialog("Success","Bill Added");
-                                                } else {
-                                                    mDialog.dismiss();
-                                                    alertDialog("Error","Please add bill again");
+                                                    alertDialog("Error", "Please add bill again");
                                                 }
                                             }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
                                         });
-                                        mBillInfo.child("last_unit").setValue(currentUnit);
-                                        mBillInfo.child("pending_amount").setValue(final_amount);
                                     }
                                 }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -192,6 +216,10 @@ public class GetDetailsActivity extends Fragment {
 
             }
         });
+    }
+
+    private void getBillNo() {
+
     }
 
     private String labelOfBillInfo() {
