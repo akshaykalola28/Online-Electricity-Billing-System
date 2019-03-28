@@ -125,7 +125,8 @@ public class GetDetailsActivity extends Fragment {
                         final int final_amount = Calculation.calculation(used_unit, pendingAmount);
 
                         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                        alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Total Amount is: " + final_amount)
+                        alertDialogBuilder.setTitle("Confirm Dialog").setMessage("Current Unit: " + currentUnit +
+                                "\nUsed Unit: " + used_unit + "\nTotal Amount is: " + final_amount)
                                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         mDialog = ProgressDialog.show(mainView.getContext(), "Loading", "Please Wait...", true);
