@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,12 +19,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    ViewGroup viewGroup;
+
     SharedPreferences sharedpreferences;
-    public static final String mypreference = "login";
+    public static final String MYPREFERENCE = "login";
 
     EditText username_ET, password_ET;
     Button logInButton;
@@ -38,74 +43,106 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewGroup = (ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0);
 
-        mUserData = FirebaseDatabase.getInstance().getReference("Users/Customer");
+        mUserData = FirebaseDatabase.getInstance().getReference("Users");
 
         username_ET = findViewById(R.id.login_username);
         password_ET = findViewById(R.id.login_password);
         forgot_TV = findViewById(R.id.forgot_password);
 
-        //getPreferences();
-        sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+        getPreferences();
+        sharedpreferences = getSharedPreferences(MYPREFERENCE, Context.MODE_PRIVATE);
 
         forgot_TV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //getFragmentManager().beginTransaction().replace(R.id.main_fragment,new ForgotPassword()).commit();
-                Intent intent = new Intent(MainActivity.this,CustomerActivity.class);
+                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                 startActivity(intent);
             }
         });
+
         logInButton = findViewById(R.id.log_in);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (getValidData()) {
                     mDialog = ProgressDialog.show(MainActivity.this, "Please Wait", "We are logging you...", true);
-                    //Check valid user
-                    mUserData.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.hasChild(username)) {
-                                mChildRef = mUserData.child(username);
-                                //Retrieve data of specific user
-                                mChildRef.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        Customer user = dataSnapshot.getValue(Customer.class);
-                                        if (user.password.equals(password)) {
-                                            Toast.makeText(MainActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
-
-                                            savePreferences();
-                                            mDialog.dismiss();
-                                            Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                                            intent.putExtra("ORIGINAL_USER", user);
-                                            startActivity(intent);
-                                            finish();
-                                        } else {
-                                            mDialog.dismiss();
-                                            Toast.makeText(MainActivity.this, "Wrong password!!", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
-                            } else {
-                                mDialog.dismiss();
-                                Toast.makeText(MainActivity.this, "User doesn't Exists.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
+                    userLogin(username);
                 }
+            }
+        });
+    }
+
+    private void userLogin(String userLogIn) {
+        username = userLogIn;
+        Query query = mUserData.child("Unit Reader").orderByChild("username").equalTo(username);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    User user = dataSnapshot.child(username).getValue(User.class);
+                    if (user.password.equals(password)) {
+                        Toast.makeText(MainActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
+
+                        savePreferences();
+                        mDialog.dismiss();
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        intent.putExtra("ORIGINAL_USER", user);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        mDialog.dismiss();
+                        Snackbar.make(viewGroup,"Wrong Password!",Snackbar.LENGTH_LONG)
+                                .setAction("ACTION",null).show();
+                    }
+                } else {
+                    //This user is customer
+                    customerLogin(username);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void customerLogin(String userLogIn) {
+        username = userLogIn;
+        Query query = mUserData.child("Customer").orderByChild("username").equalTo(username);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Customer user = dataSnapshot.child(username).getValue(Customer.class);
+                    if (user.password.equals(password)) {
+                        Toast.makeText(MainActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
+
+                        savePreferences();
+                        mDialog.dismiss();
+                        Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                        intent.putExtra("ORIGINAL_USER", user);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        mDialog.dismiss();
+                        Snackbar.make(viewGroup,"Wrong Password!",Snackbar.LENGTH_LONG)
+                                .setAction("ACTION",null).show();
+                    }
+                } else {
+                    mDialog.dismiss();
+                    Snackbar.make(viewGroup,"User Doesn't Exists",Snackbar.LENGTH_LONG)
+                            .setAction("ACTION",null).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -117,24 +154,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getPreferences() {
-        sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(MYPREFERENCE, Context.MODE_PRIVATE);
 
         if (sharedpreferences.contains("usernameKey")) {
             username_ET.setText(sharedpreferences.getString("usernameKey", ""));
             username = sharedpreferences.getString("usernameKey", "");
-            mChildRef = mUserData.child(username);
+            mDialog = ProgressDialog.show(MainActivity.this, "Please Wait", "We are logging you...", true);
 
-            mDialog = ProgressDialog.show(MainActivity.this,"Please Wait","We are logging you...",true);
             //Retrieve data of specific user
-            mChildRef.addValueEventListener(new ValueEventListener() {
+            Query query = mUserData.child("Unit Reader").orderByChild("username").equalTo(username);
+            query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    User user = dataSnapshot.getValue(User.class);
-                    mDialog.dismiss();
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    intent.putExtra("ORIGINAL_USER", user);
-                    startActivity(intent);
-                    finish();
+                    if (dataSnapshot.exists()) {
+                        User user = dataSnapshot.child(username).getValue(User.class);
+                        mDialog.dismiss();
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        intent.putExtra("ORIGINAL_USER", user);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Query query1 = mUserData.child("Customer").orderByChild("username").equalTo(username);
+                        query1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Customer user = dataSnapshot.child(username).getValue(Customer.class);
+                                mDialog.dismiss();
+                                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                                intent.putExtra("ORIGINAL_USER", user);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
                 }
 
                 @Override

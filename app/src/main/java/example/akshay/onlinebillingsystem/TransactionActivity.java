@@ -24,6 +24,7 @@ import java.util.List;
 public class TransactionActivity extends Fragment {
 
     View mainView;
+    Customer mCustomer;
 
     private RecyclerView recyclerView;
     private DetailAdapter adapter;
@@ -36,7 +37,8 @@ public class TransactionActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.activity_transaction, container, false);
 
-        ((CustomerActivity) getActivity()).setActionBarTitle("Previous Bill");
+        ((CustomerActivity) getActivity()).setActionBarTitle("Bill Details");
+        mCustomer = ((CustomerActivity) getActivity()).getCustomer();
 
         recyclerView = mainView.findViewById(R.id.transactionRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -45,7 +47,7 @@ public class TransactionActivity extends Fragment {
         adapter = new DetailAdapter(getActivity().getApplicationContext(), billList);
         recyclerView.setAdapter(adapter);
 
-        mRef = FirebaseDatabase.getInstance().getReference("/Bill Info/121");
+        mRef = FirebaseDatabase.getInstance().getReference("/Bill Info/" + mCustomer.meter_no);
         Query query = mRef.orderByChild("bill_no");
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -71,7 +73,6 @@ public class TransactionActivity extends Fragment {
 
             }
         });
-
 
         return mainView;
     }

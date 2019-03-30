@@ -9,6 +9,11 @@
             android:icon="@drawable/ic_view_list_black"
             android:title="Bill Details" />
 
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_highlight_off_black_24dp"
+            android:title="Log Out" />
+
     </group>
 
     <!--<item android:title="Communicate">

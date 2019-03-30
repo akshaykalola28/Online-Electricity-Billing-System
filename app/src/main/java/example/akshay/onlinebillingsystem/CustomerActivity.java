@@ -112,6 +112,8 @@ public class CustomerActivity extends AppCompatActivity
 
         if (id == R.id.nav_bill_details) {
             getFragmentManager().beginTransaction().replace(R.id.customer_fragment,new TransactionActivity()).commit();
+        } else if (id == R.id.nav_logout) {
+            logOut();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -121,5 +123,9 @@ public class CustomerActivity extends AppCompatActivity
 
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
+    }
+
+    public Customer getCustomer(){
+        return mOriginalUser;
     }
 }
