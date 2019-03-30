@@ -141,7 +141,7 @@ public class GetDetailsActivity extends Fragment {
                                                     billNo++;
                                                     billNoRef.child("bill_no").setValue(billNo);
 
-                                                    AddBill addBill = new AddBill(billNo, used_unit, final_amount);
+                                                    AddBill addBill = new AddBill(billNo, used_unit, final_amount, "pending");
                                                     mBillInfo.child(labelOfBillInfo()).setValue(addBill).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {

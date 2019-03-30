@@ -1,5 +1,6 @@
 package example.akshay.onlinebillingsystem;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailViewHolder> {
 
@@ -26,12 +31,23 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
         return new DetailViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(DetailViewHolder holder, int position) {
         AddBill addBill = billList.get(position);
-        holder.textBillDate.setText("Date: " + addBill.date);
-        holder.textBillNo.setText("Bill No.: " + addBill.bill_no);
-        holder.textUsedUnit.setText("Used Unit: " + addBill.used_unit);
+
+        try {
+            Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(addBill.date);
+            String date = new SimpleDateFormat("MMM, yyyy", Locale.getDefault()).format(d1);
+            holder.textBillDate.setText(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        holder.textAmount.setText("₹ " + addBill.payable_amount);
+        holder.textBillNo.setText("" + addBill.bill_no);
+        holder.textUsedUnit.setText("" + addBill.used_unit);
+        holder.textDueDate.setText("" + addBill.due_date);
+        holder.textStatus.setText("" + addBill.status);
     }
 
     @Override
@@ -41,7 +57,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
 
     class DetailViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textBillDate, textBillNo, textUsedUnit;
+        TextView textBillDate, textBillNo, textUsedUnit, textAmount, textDueDate, textStatus;
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -49,6 +65,9 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             textBillDate = itemView.findViewById(R.id.bill_date);
             textBillNo = itemView.findViewById(R.id.bill_no);
             textUsedUnit = itemView.findViewById(R.id.used_unit);
+            textAmount = itemView.findViewById(R.id.bill_amount);
+            textDueDate = itemView.findViewById(R.id.due_date);
+            textStatus = itemView.findViewById(R.id.status);
         }
     }
 }

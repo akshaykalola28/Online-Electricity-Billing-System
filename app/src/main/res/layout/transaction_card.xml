@@ -3,41 +3,108 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="10dp"
         card_view:contentPadding="5dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:padding="5dp">
 
             <TextView
                 android:id="@+id/bill_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:text="Label"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/bill_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:gravity="top|end"
+                android:text="Amount"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <View
+                android:id="@+id/horizontal_line"
+                android:layout_below="@id/bill_date"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:background="#c0c0c0"/>
+
+            <TextView
+                android:id="@+id/bill_no_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/horizontal_line"
+                android:layout_marginTop="5dp"
+                android:text="Bill number"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/due_date_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/horizontal_line"
+                android:layout_marginTop="5dp"
+                android:gravity="top|end"
+                android:text="Due Date"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:id="@+id/bill_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bill no."
+                android:layout_below="@id/bill_no_text"
+                android:text="number" />
+
+            <TextView
+                android:id="@+id/due_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bill_no_text"
+                android:gravity="top|end"
+                android:text="date" />
+
+            <TextView
+                android:id="@+id/used_unit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bill_no"
+                android:layout_marginTop="5dp"
+                android:text="Used Unit"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bill_no"
+                android:layout_marginTop="5dp"
+                android:gravity="top|end"
+                android:text="Status"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:id="@+id/used_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Used Unit:"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-        </LinearLayout>
+                android:layout_below="@id/used_unit_text"
+                android:text="unit" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/used_unit_text"
+                android:gravity="top|end"
+                android:text="status" />
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>
