@@ -106,7 +106,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);*/
             getFragmentManager().beginTransaction().replace(R.id.fragment_container,new GetDetailsActivity()).commit();
         } else if (id == R.id.nav_forgot_password) {
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container,new ForgotPassword()).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container,new ChangePassword()).commit();
         } else if (id == R.id.nav_logout) {
             logOut();
         }
@@ -114,6 +114,10 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public User getUnitReader(){
+        return mOriginalUser;
     }
 
     public void setActionBarTitle(String title) {

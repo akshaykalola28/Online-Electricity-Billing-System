@@ -10,6 +10,11 @@
             android:title="Bill Details" />
 
         <item
+            android:id="@+id/nav_forgot_password"
+            android:icon="@drawable/ic_lock_outline_black_24dp"
+            android:title="Forgot Password" />
+
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_highlight_off_black_24dp"
             android:title="Log Out" />

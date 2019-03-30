@@ -112,6 +112,8 @@ public class CustomerActivity extends AppCompatActivity
 
         if (id == R.id.nav_bill_details) {
             getFragmentManager().beginTransaction().replace(R.id.customer_fragment,new TransactionActivity()).commit();
+        } else if(id == R.id.nav_forgot_password){
+            getFragmentManager().beginTransaction().replace(R.id.customer_fragment,new ChangePassword()).commit();
         } else if (id == R.id.nav_logout) {
             logOut();
         }

@@ -58,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
         forgot_TV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //getFragmentManager().beginTransaction().replace(R.id.main_fragment,new ForgotPassword()).commit();
-                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                startActivity(intent);
+
             }
         });
 
