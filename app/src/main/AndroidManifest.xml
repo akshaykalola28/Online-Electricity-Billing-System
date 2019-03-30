@@ -17,6 +17,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
+            android:name=".CustomerActivity"
+            android:label="@string/title_activity_customer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".TransactionActivity"
             android:label="Bill Details" />
         <activity

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String mypreference = "login";
 
     EditText username_ET, password_ET;
-    Button logInButton, registerButton;
+    Button logInButton;
     TextView forgot_TV;
 
     String username, password;
@@ -39,21 +39,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mUserData = FirebaseDatabase.getInstance().getReference("Users/Unit Reader");
+        mUserData = FirebaseDatabase.getInstance().getReference("Users/Customer");
 
         username_ET = findViewById(R.id.login_username);
         password_ET = findViewById(R.id.login_password);
         forgot_TV = findViewById(R.id.forgot_password);
 
-        getPreferences();
-
+        //getPreferences();
         sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
         forgot_TV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //getFragmentManager().beginTransaction().replace(R.id.main_fragment,new ForgotPassword()).commit();
-                Intent intent = new Intent(MainActivity.this,TransactionActivity.class);
+                Intent intent = new Intent(MainActivity.this,CustomerActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
                                 mChildRef.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        User user = dataSnapshot.getValue(User.class);
-                                        if (user.getPassword().equals(password)) {
+                                        Customer user = dataSnapshot.getValue(Customer.class);
+                                        if (user.password.equals(password)) {
                                             Toast.makeText(MainActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
 
                                             savePreferences();
                                             mDialog.dismiss();
-                                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                            Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                                             intent.putExtra("ORIGINAL_USER", user);
                                             startActivity(intent);
                                             finish();

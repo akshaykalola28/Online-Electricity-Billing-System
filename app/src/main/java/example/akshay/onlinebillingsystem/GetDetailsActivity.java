@@ -219,10 +219,6 @@ public class GetDetailsActivity extends Fragment {
         });
     }
 
-    private void getBillNo() {
-
-    }
-
     private String labelOfBillInfo() {
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);

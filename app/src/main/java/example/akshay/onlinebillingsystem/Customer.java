@@ -1,6 +1,8 @@
 package example.akshay.onlinebillingsystem;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
 
     public String name, email, username, password, mo_no;
     public int c_no, meter_no;
