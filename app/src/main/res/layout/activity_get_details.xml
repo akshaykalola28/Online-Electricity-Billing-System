@@ -49,6 +49,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="60dp"
                     android:layout_weight="3"
+                    android:background="@drawable/button_background"
+                    android:minHeight="40dp"
                     android:text="Get Details"
                     tools:layout_editor_absoluteX="117dp"
                     tools:layout_editor_absoluteY="107dp" />
@@ -222,6 +224,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:layout_weight="1"
+                        android:background="@drawable/button_background"
+                        android:minHeight="40dp"
                         android:text="Submit" />
 
                     <Button
@@ -230,6 +234,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:layout_weight="1"
+                        android:background="@drawable/button_background"
+                        android:minHeight="40dp"
                         android:text="Reset" />
                 </LinearLayout>
 
