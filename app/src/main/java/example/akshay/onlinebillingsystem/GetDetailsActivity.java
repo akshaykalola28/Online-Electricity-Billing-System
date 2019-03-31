@@ -41,7 +41,7 @@ public class GetDetailsActivity extends Fragment {
     int intMeterNo, currentUnit, lastUnit, pendingAmount;
 
     FirebaseDatabase database;
-    DatabaseReference mCustomerRef, mParticularRef, mBillInfo;
+    DatabaseReference mCustomerRef, mBillInfo;
     ProgressDialog mDialog;
 
     @Nullable
@@ -49,7 +49,6 @@ public class GetDetailsActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.activity_get_details, container, false);
 
-        //Toolbar toolbar = (Toolbar) mainView.findViewById(R.id.toolbar);
         ((HomeActivity) getActivity()).setActionBarTitle("Add Bill");
 
         meterNoEditText = mainView.findViewById(R.id.get_meter_no);

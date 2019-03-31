@@ -107,6 +107,8 @@ public class HomeActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.fragment_container,new GetDetailsActivity()).commit();
         } else if (id == R.id.nav_forgot_password) {
             getFragmentManager().beginTransaction().replace(R.id.fragment_container,new ChangePassword()).commit();
+        } else if (id == R.id.nav_contact){
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactUsActivity()).commit();
         } else if (id == R.id.nav_logout) {
             logOut();
         }
