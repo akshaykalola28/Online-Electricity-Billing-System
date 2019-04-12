@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".Register"
+    android:background="@drawable/background_gradient">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -172,9 +173,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="20dp"
+                android:maxHeight="40dp"
                 android:layout_marginRight="70dp"
                 android:layout_marginBottom="20dp"
-                android:text="Submit" />
+                android:text="Submit"
+                android:background="@drawable/button_background"/>
 
         </LinearLayout>
     </ScrollView>

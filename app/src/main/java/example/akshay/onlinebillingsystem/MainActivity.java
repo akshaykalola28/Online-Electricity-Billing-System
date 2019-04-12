@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         forgot_TV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MainActivity.this, ForgotPassActivity.class));
             }
         });
 
@@ -93,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     } else {
                         mDialog.dismiss();
-                        Snackbar.make(viewGroup,"Wrong Password!",Snackbar.LENGTH_LONG)
-                                .setAction("ACTION",null).show();
+                        Snackbar.make(viewGroup, "Wrong Password!", Snackbar.LENGTH_LONG)
+                                .setAction("ACTION", null).show();
                     }
                 } else {
                     //This user is customer
@@ -128,13 +128,13 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     } else {
                         mDialog.dismiss();
-                        Snackbar.make(viewGroup,"Wrong Password!",Snackbar.LENGTH_LONG)
-                                .setAction("ACTION",null).show();
+                        Snackbar.make(viewGroup, "Wrong Password!", Snackbar.LENGTH_LONG)
+                                .setAction("ACTION", null).show();
                     }
                 } else {
                     mDialog.dismiss();
-                    Snackbar.make(viewGroup,"User Doesn't Exists",Snackbar.LENGTH_LONG)
-                            .setAction("ACTION",null).show();
+                    Snackbar.make(viewGroup, "User Doesn't Exists", Snackbar.LENGTH_LONG)
+                            .setAction("ACTION", null).show();
                 }
             }
 

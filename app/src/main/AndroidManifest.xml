@@ -16,14 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ContactUsActivity"></activity>
+        <activity
+            android:name=".ForgotPassActivity"
+            android:label="Forgot Password" />
         <activity
             android:name=".CustomerActivity"
             android:label="@string/title_activity_customer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".TransactionActivity"
-            android:label="Bill Details" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
