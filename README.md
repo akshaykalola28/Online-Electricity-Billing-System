@@ -4,21 +4,19 @@
 In this Android Application, Unit Reader will enter the meter number and current unit from the Electricity meter. After that, automatically calculate the amount and it will send soft copy of the bill to the customer through registered E-mail Id. I have used the back-end technology as Firebase.
 
 Login Screen, Common for both user Unit Reader and Customer.
-![](/screenshots/login.png){ width=50% }
+<img src="/screenshots/login.png" width="30%" />
 
 Add Bill from Unit reader.
-![](/screenshots/add_bill_from_unit_reader.png)
+<img src="/screenshots/add_bill_from_unit_reader.png" width="30%" />
 
 Confirm Dialog.
-
-![](/screenshots/confirm_dialog.png)
+<img src="/screenshots/confirm_dialog.png" width="30%" />
 
 Customer Menu.
-
-![](/screenshots/user_menu.png)
+<img src="/screenshots/user_menu.png" width="30%" />
 
 Customer Bill Details.
-![](/screenshots/user_bill_details.png)
+<img src="/screenshots/user_bill_details.png" width="30%" />
 
 Contant Us for any Query.
-![](/screenshots/contact_us.png)
+<img src="/screenshots/contact_us.png" width="30%" />
