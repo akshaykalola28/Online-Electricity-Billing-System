@@ -102,8 +102,6 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add_bill) {
-            /*Intent intent = new Intent(HomeActivity.this,GetDetailsActivity.class);
-            startActivity(intent);*/
             getFragmentManager().beginTransaction().replace(R.id.fragment_container,new GetDetailsActivity()).commit();
         } else if (id == R.id.nav_forgot_password) {
             getFragmentManager().beginTransaction().replace(R.id.fragment_container,new ChangePassword()).commit();
