@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">mylibrary</string>
+    <string name="free_text_restriction">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890ēāéñễấũ.,/-</string>
+    <string name="sLblCompName">Online Electricity Billing System</string>
+    <string name="sLblCopyright">© All Rights Reserved Github edited by : unclejo</string>
+
+    <string name="create_account">Create Account</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="agree">I agree</string>
+    <string name="terms_and_conditions">with the <b>Terms and Conditions.</b></string>
+    <string name="user_authentication">User Authentication</string>
+    <string name="lblRetrievePassword">Retrieve Password</string>
+    <string name="create_account_description">Please provide all information requested to create your account.</string>
+    <string name="email_retrieval_message">Please enter your email address to receive password info.</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_middle_name">Middle Name</string>
+    <string name="hint_suffix">Suffix</string>
+    <string name="hint_mobile_number">Mobile Number</string>
+
+    <string name="button_login">Login</string>
+    <string name="button_send_email">Send Email</string>
+    <string name="button_send_verification">Send Verification</string>
+</resources>
