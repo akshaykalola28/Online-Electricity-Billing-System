@@ -25,7 +25,7 @@
         <menu>
             <item
                 android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_send_black_24dp"
+                android:icon="@drawable/ic_baseline_send_24"
                 android:title="Contact Us" />
         </menu>
     </item>
