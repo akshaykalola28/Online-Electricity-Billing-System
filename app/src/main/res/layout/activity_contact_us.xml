@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".ContactUsActivity">
 
     <RelativeLayout
@@ -13,15 +14,26 @@
             android:id="@+id/_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:enabled="false"
+                android:textColor="@color/black"
+                android:fontFamily="@font/avenir_medium"
+                android:background="@color/mainBackground"
+                android:padding="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -30,15 +42,26 @@
             android:id="@+id/_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:layout_marginTop="6dp"
             android:layout_below="@id/_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:hint="Subject"
+                android:textColor="@color/black"
+                android:fontFamily="@font/avenir_medium"
+                android:background="@color/mainBackground"
+                android:padding="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,10 +75,16 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+
                 android:gravity="top|left"
                 android:hint="Description"
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="6dp"
+                android:textColor="@color/black"
+                android:paddingBottom="12dp"
+                android:background="@drawable/edit_text_bg"
+                android:layout_marginTop="6dp"
                 android:inputType="textMultiLine"
                 android:lines="4" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,7 +96,11 @@
             android:layout_below="@id/_description"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/avenir_bold"
+            android:textSize="18sp"
+            android:background="@drawable/btn_bg"
             android:text="Submit" />
     </RelativeLayout>
 </ScrollView>
