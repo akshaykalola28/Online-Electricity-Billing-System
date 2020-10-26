@@ -3,21 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".ForgotPassActivity"
-    android:background="@drawable/background_gradient">
+    android:background="@color/mainBackground">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/_username"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:layout_width="match_parent"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="12dp"
         android:layout_marginTop="40dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:fontFamily="@font/avenir_medium"
+            android:background="@color/mainBackground"
+            android:padding="2dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
             android:hint="Username"
             android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -29,7 +41,11 @@
         android:layout_below="@id/_username"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_background"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/avenir_bold"
+        android:background="@drawable/btn_bg"
         android:minHeight="40dp"
         android:text="Send Password" />
 

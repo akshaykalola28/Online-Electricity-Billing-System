@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".GetDetailsActivity">
 
     <ScrollView
@@ -27,6 +28,11 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_password"
+                    android:paddingRight="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="12dp"
+                    android:background="@drawable/edit_text_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -34,8 +40,15 @@
                         android:id="@+id/get_meter_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_medium"
+                        android:background="@color/mainBackground"
+                        android:padding="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="3"
                         android:ems="10"
+                        android:textColor="@color/black"
                         android:hint="Enter Meter No."
                         android:inputType="number" />
 
@@ -49,7 +62,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="60dp"
                     android:layout_weight="3"
-                    android:background="@drawable/button_background"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:background="@drawable/btn_bg"
                     android:minHeight="40dp"
                     android:text="Get Details"
                     tools:layout_editor_absoluteX="117dp"
@@ -82,7 +97,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="Customer Name:"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -92,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="Customer Number:"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -102,7 +117,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="Meter Number:"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -112,7 +127,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="Pending Amount:"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -122,7 +137,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="Last Unit Count:"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -132,7 +147,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="Current Unit Count:"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -142,7 +157,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
+                        android:fontFamily="@font/avenir_medium"
                         android:orientation="vertical"
                         android:textColor="#000"
                         android:textSize="18dp">
@@ -152,7 +167,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="####"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -162,7 +177,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="####"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -172,7 +187,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="####"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -182,7 +197,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:text="####"
                             android:textColor="#000"
                             android:textSize="18dp" />
@@ -203,7 +218,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:ems="10"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="@font/avenir_medium"
                             android:hint="Enter Current Unit"
                             android:inputType="number"
                             android:textColor="#000"
@@ -224,7 +239,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:layout_weight="1"
-                        android:background="@drawable/button_background"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:background="@drawable/btn_bg"
                         android:minHeight="40dp"
                         android:text="Submit" />
 
@@ -234,7 +251,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:layout_weight="1"
-                        android:background="@drawable/button_background"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:background="@drawable/btn_bg"
                         android:minHeight="40dp"
                         android:text="Reset" />
                 </LinearLayout>

@@ -10,7 +10,7 @@
             android:title="Add Bill" />
         <item
             android:id="@+id/nav_forgot_password"
-            android:icon="@drawable/ic_lock_outline_black_24dp"
+            android:icon="@drawable/ic_lock_blue"
             android:title="Change Password" />
 
         <item

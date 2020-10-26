@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
@@ -13,14 +14,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp">
+            android:background="@drawable/edit_text_bg"
+            android:padding="6dp">
 
             <TextView
                 android:id="@+id/bill_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="top|start"
+                android:fontFamily="@font/avenir_bold"
                 android:text="Label"
+                android:background="@drawable/blue_bg"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
             <TextView
@@ -28,8 +37,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top|end"
+                android:fontFamily="@font/avenir_bold"
                 android:text="Amount"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                android:textSize="24sp"
+                android:textColor="@color/black"
+               />
 
             <View
                 android:id="@+id/horizontal_line"
@@ -46,14 +58,20 @@
                 android:layout_below="@id/horizontal_line"
                 android:layout_marginTop="5dp"
                 android:text="Bill number"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/avenir_medium"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:id="@+id/due_date_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/avenir_medium"
                 android:layout_below="@id/horizontal_line"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:gravity="top|end"
                 android:text="Due Date"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -62,15 +80,23 @@
                 android:id="@+id/bill_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
                 android:layout_below="@id/bill_no_text"
-                android:text="number" />
+                android:text="Number" />
 
             <TextView
                 android:id="@+id/due_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
                 android:layout_below="@id/bill_no_text"
                 android:gravity="top|end"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 android:text="date" />
 
             <TextView
@@ -80,14 +106,20 @@
                 android:layout_below="@id/bill_no"
                 android:layout_marginTop="5dp"
                 android:text="Used Unit"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/avenir_medium"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bill_no"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:gravity="top|end"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/avenir_medium"
                 android:text="Status"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -95,14 +127,22 @@
                 android:id="@+id/used_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/avenir_medium"
                 android:layout_below="@id/used_unit_text"
-                android:text="unit" />
+                android:text="Unit" />
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/used_unit_text"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/avenir_medium"
                 android:gravity="top|end"
                 android:text="status" />
         </RelativeLayout>

@@ -3,14 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Register"
-    android:background="@drawable/background_gradient">
+    android:padding="12dp"
+    android:background="@color/mainBackground">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -32,12 +35,20 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp"
+                android:background="@drawable/edit_text_bg"
+                android:layout_marginTop="6dp">
 
                 <EditText
                     android:id="@+id/enter_cname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -51,15 +62,23 @@
                 android:id="@+id/cno_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@drawable/edit_text_bg"
+                android:layout_marginTop="6dp">
 
                 <EditText
                     android:id="@+id/enter_cno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
-                    android:ems="10"
                     android:hint="Customer No."
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -68,12 +87,20 @@
                 android:id="@+id/mno_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@drawable/edit_text_bg"
+                android:layout_marginTop="6dp">
 
                 <EditText
                     android:id="@+id/enter_meter_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -85,12 +112,21 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:background="@drawable/edit_text_bg"
+                android:layout_marginTop="6dp">
 
                 <EditText
                     android:id="@+id/enter_mo_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -102,12 +138,20 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_text_bg">
 
                 <EditText
                     android:id="@+id/enter_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -119,12 +163,20 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_text_bg">
 
                 <EditText
                     android:id="@+id/enter_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -136,12 +188,20 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_text_bg">
 
                 <EditText
                     android:id="@+id/enter_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -153,12 +213,20 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_text_bg">
 
                 <EditText
                     android:id="@+id/enter_cpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_medium"
+                    android:background="@color/mainBackground"
+                    android:padding="2dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
@@ -177,7 +245,11 @@
                 android:layout_marginRight="70dp"
                 android:layout_marginBottom="20dp"
                 android:text="Submit"
-                android:background="@drawable/button_background"/>
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/avenir_bold"
+                android:background="@drawable/btn_bg"/>
 
         </LinearLayout>
     </ScrollView>

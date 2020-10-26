@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".CustomerActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -26,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_below="@id/app_bar"
         android:layout_height="match_parent"
-        android:background="@drawable/background_gradient"/>
+        android:background="@color/mainBackground"/>
 
     <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
