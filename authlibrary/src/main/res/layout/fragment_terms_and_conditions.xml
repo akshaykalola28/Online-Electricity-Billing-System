@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Android Team MIS-SEG Year 2021
+  ~ Copyright (c) 2021. Guanzon Central Office
+  ~ Guanzon Bldg., Perez Blvd., Dagupan City, Pangasinan 2400
+  ~ Project name : GhostRider_Android
+  ~ Module : GhostRider_Android.authLibrary
+  ~ Electronic Personnel Access Control Security System
+  ~ project file created : 6/10/21 2:53 PM
+  ~ project file last modified : 6/10/21 2:53 PM
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserInterface.Terms.Fragment_TermsAndConditions"
+    android:orientation="vertical"
+    android:theme="@style/OEBS_THEME"
+    android:background="@drawable/bg_gradient_light">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="35dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_black"
+                android:text="TERMS AND CONDITIONS"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="1. ACCEPTANCE THE USE OF LOREM IPSUM TERMS AND CONDITIONS"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="18dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your access to and use of Lorem Ipsum (the app) is subject exclusively to these Terms and Conditions. You will not use the app for any purpose that is unlawful or prohibited by these Terms and Conditions. By using the app you are fully accepting the terms, conditions and disclaimers contained in this notice. If you do not accept these Terms and Conditions you must immediately stop using the app."               android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="2. CREDIT CARD DETAILS"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.1  You are given a non-transferable, non-exclusive, non-sublicensable license to install and use the Licensed Application on any Android-branded Products that You (End-User) own or control and as permitted by the Usage Rules set forth in this section and the Google Play Terms of Service, with the exception that such licensed Application may be accessed and used by other accounts associated with You (End-User, The Purchaser) via Family Sharing or volume purchasing."
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="3. LEGAL ADVICE"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="18dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The contents of Lorem Ipsum app do not constitute advice and should not be relied upon in making or refraining from making, any decision.
+                            All material contained on Lorem Ipsum is provided without any or warranty of any kind. You use the material on Lorem Ipsum at your own discretion"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="4. CHANGE OF USE"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="18dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4.1 change or remove (temporarily or permanently) the app or any part of it without notice and you confirm that Lorem Ipsum shall not be liable to you for any such change or removal and."
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4.2 change these Terms and Conditions at any time, and your continued use of the app following any changes shall be deemed to be your acceptance of such change."
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="5. LINKS TO THIRD PARTY APPS AND WEBSITES"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="18dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum app may include links to third party apps and websites that are controlled and maintained by others. Any link to other apps and websites is not an endorsement of such and you acknowledge and agree that we are not responsible for the content or availability of any such apps and websites."
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="6. COPYRIGHT"
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="18dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6.1 All copyright, trade marks and all other intellectual property rights in the app and its content (including without limitation the app design, text, graphics and all software and source codes connected with the app) are owned by or licensed to Lorem Ipsum or otherwise used by Lorem Ipsum as permitted by law."
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6.2 In accessing the app you agree that you will access the content solely for your personal, non-commercial use. None of the content may be downloaded, copied, reproduced, transmitted, stored, sold or distributed without the prior written consent of the copyright holder. This excludes the downloading, copying and/or printing of pages of the app for personal, non-commercial home use only."
+                android:textColor="@color/footer_dark_grey"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
