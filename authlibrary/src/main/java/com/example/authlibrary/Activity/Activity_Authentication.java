@@ -1,8 +1,8 @@
 package com.example.authlibrary.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.authlibrary.R;
 import com.example.mylibrary.etc.TransparentToolbar;
