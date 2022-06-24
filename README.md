@@ -5,7 +5,11 @@ In this Android Application, Unit Reader will enter the meter number and current
 
 Login Screen, Common for both user Unit Reader and Customer.
 
-<img src="/screenshots/login.png" width="30%" />
+<img src="/screenshots/login_ui.png" width="30%" />
+
+Registration Screen, Common for both user Unit Reader and Customer.
+
+<img src="/screenshots/registration_ui.png" width="30%" />
 
 Add Bill from Unit reader.
 
