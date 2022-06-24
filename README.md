@@ -13,7 +13,7 @@ Registration Screen, Common for both user Unit Reader and Customer.
 
 Terms and Conditions Screen, Common for both user Unit Reader and Customer.
 
-<img src="/screenshots/terms_and_conditions_ui.PNG" width="30%" />
+<img src="/screenshots/terms_and_condition_ui.PNG" width="30%" />
 
 Add Bill from Unit reader.
 
