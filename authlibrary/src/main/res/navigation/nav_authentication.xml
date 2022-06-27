@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Android Team MIS-SEG Year 2021
+  ~ Copyright (c) 2021. Guanzon Central Office
+  ~ Guanzon Bldg., Perez Blvd., Dagupan City, Pangasinan 2400
+  ~ Project name : GhostRider_Android
+  ~ Module : GhostRider_Android.authLibrary
+  ~ Electronic Personnel Access Control Security System
+  ~ project file created : 4/24/21 3:19 PM
+  ~ project file last modified : 4/24/21 3:17 PM
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_authentication"
+    app:startDestination="@id/fragment_Login">
+
+    <fragment
+        android:id="@+id/fragment_Login"
+        android:name="com.example.authlibrary.UserInterface.Login.Fragment_Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragment_Login_to_fragment_CreateAccount"
+            app:destination="@id/fragment_CreateAccount" />
+        <action
+            android:id="@+id/action_fragment_Login_to_fragment_ForgotPassword"
+            app:destination="@id/fragment_ForgotPassword" />
+        <action
+            android:id="@+id/action_fragment_Login_to_fragment_TermsAndConditions"
+            app:destination="@id/fragment_TermsAndConditions" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_CreateAccount"
+        android:name="com.example.authlibrary.UserInterface.CreateAccount.Fragment_CreateAccount"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" >
+        <action
+            android:id="@+id/action_fragment_CreateAccount_to_fragment_Login"
+            app:destination="@id/fragment_Login" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_ForgotPassword"
+        android:name="com.example.authlibrary.UserInterface.ForgotPassword.Fragment_ForgotPassword"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_fragment_ForgotPassword_to_fragment_Login"
+            app:destination="@id/fragment_Login" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_TermsAndConditions"
+        android:name="com.example.authlibrary.UserInterface.Terms.Fragment_TermsAndConditions"
+        android:label="fragment_terms_and_conditions"
+        tools:layout="@layout/fragment_terms_and_conditions" >
+        <action
+            android:id="@+id/action_fragment_terms_and_conditions_to_fragment_Login"
+            app:destination="@id/fragment_Login" />
+    </fragment>
+</navigation>

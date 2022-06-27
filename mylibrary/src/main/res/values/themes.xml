@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    Online Electric Billing System (OEBS)-->
+    <style name="OEBS_THEME" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/material_digital_orange</item>
+        <item name="colorPrimaryVariant">@color/material_black</item>
+        <item name="colorOnPrimary">@color/material_digital_orange</item>
+        <!--        <item name="colorOnBackground" tools:ignore="DuplicateDefinition">@drawable/bg_gradient_light</item>-->
+        <!--        <item name="colorOnSurface" tools:ignore="DuplicateDefinition">@drawable/bg_gradient_light</item>-->
+        <!--        <item name="colorAccent">@color/light_grey</item>-->
+
+        <item name="colorAccent">@color/material_digital_orange</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/material_digital_orange</item>
+        <item name="colorSecondaryVariant">@color/material_digital_orange</item>
+        <item name="colorOnSecondary">@color/material_black</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="android:popupMenuStyle">@style/MyPopupOtherStyle</item>
+        <item name="popupTheme">@style/MyPopupOtherStyle</item>
+        <item name="android:windowBackground">@color/material_white</item>
+        <item name="colorControlNormal">@color/textColor_White</item>
+    </style>
+    <style name="MyPopupOtherStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/material_black</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/material_white</item>
+    </style>
+    <style name="OEBS_THEME.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="OEBS_THEME.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="android:textColorPrimary">@color/material_black</item>
+        <item name="android:popupMenuStyle">@style/MyPopupOtherStyle</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+
+    </style>
+    <style name="OEBS_THEME.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="PopupAnimation">
+        <item name="android:windowEnterAnimation">@anim/anim_pop_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_pop_out</item>
+    </style>
+    <!-- TEXT INPUT -->
+
+    <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">2dp</item>
+        <item name="boxStrokeColor">@color/material_digital_orange</item>
+        <item name="hintTextColor">@color/material_digital_orange</item>
+        <item name="colorControlActivated">@color/material_orange</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+
+    </style>
+    <style name="TextInputTextAreaStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">2dp</item>
+        <item name="boxStrokeColor">@color/material_digital_orange</item>
+        <item name="hintTextColor">@color/material_digital_orange</item>
+        <item name="colorControlActivated">@color/material_orange</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+    </style>
+    <style name="TextInputStyle.Edittext">
+        <item name="iconStartPadding">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textColor">@color/textColor_Black</item>
+        <item name="colorControlActivated">@color/material_orange</item>
+        <item name="hintTextColor">@color/textColor_Black</item>
+    </style>
+
+    <!-- BUTTONS -->
+
+    <style name="OEBS_THEME_Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="backgroundTint">@color/material_digital_orange</item>
+        <item name="android:textColor">@color/material_white</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>

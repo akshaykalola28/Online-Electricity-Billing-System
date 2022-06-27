@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="material_orange">#F88222</color>
+    <color name="material_black" >#101010</color>
+    <color name="material_white">#e2e2e2</color>
+    <color name="textColor_Black">#000</color>
+    <color name="textColor_Orange">#F88222</color>
+    <color name="textColor_White">#FFF</color>
+    <color name="hintColor_Black">#161616</color>
+    <color name="hintColor_Orange">#F47422</color>
+    <color name="material_digital_orange">#FF8200</color>
+    <color name="progressDialogTint">#1A1C25</color>
+    <color name="material_lightgrey">#fcfcfc</color>
+    <color name="material_lightgrey_selector">#ebebeb</color>
+    <color name="material_nav_light_gradient">#575757</color>
+    <color name="material_nav_dark_gradient">#101010</color>
+    <color name="material_dark_grey">#8C8C8C</color>
+    <color name="material_text_grey">#272727</color>
+    <color name="material_deep_dark_grey">#222222</color>
+
+    <color name="material_light_red">#ff3333</color>
+    <color name="material_light_green">#76EE00</color>
+    <color name="hint_color">#dadada</color>
+
+    <color name="material_green">#008000</color>
+    <color name="material_red">#ac0d0d</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" >#6B000000</color>
+    <color name="mtrl_textinput_default_box_stroke_colors" >#fbfbfb</color>
+
+    <color name="text_input_layout_stroke_color" >@color/border_white</color>
+    <color name="text_input_color_hint" >@color/text_color_hint</color>
+    <color name="material_master_light_gradient">#ffff</color>
+    <color name="material_master_dark_gradient">#DBDBDB</color>
+    <color name="material_tool_bar">#101010</color>
+    <color name="footer_dark_grey">#393939</color>
+</resources>

@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "example.akshay.onlinebillingsystem"
         minSdkVersion 21
-        targetSdkVersion 29
+//        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -33,6 +33,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    implementation project(':mylibrary')
+    implementation project(':authLibrary')
 }
 
 apply plugin: 'com.google.gms.google-services'
